@@ -63,7 +63,7 @@ public class AbexsIdleNotifierPlugin extends Plugin
 						lc = lc.getImpostor();
 					}
 					id = lc.getId();
-					loc = WorldPoint.fromScene(client, ev.getActionParam(), ev.getWidgetId(), client.getPlane());
+					loc = WorldPoint.fromScene(client, ev.getParam0(), ev.getParam1(), client.getPlane());
 					break;
 				}
 				//fallthrough
