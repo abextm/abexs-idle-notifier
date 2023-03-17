@@ -46,6 +46,29 @@ public class AbexsIdleNotifierPlugin extends Plugin
 		loc = null;
 	}
 
+	private boolean shouldNotify(MenuOptionClicked ev)
+	{
+		switch (ev.getMenuOption())
+		{
+			case "Mine":
+				switch (ev.getId())
+				{
+					case ObjectID.BLOCKED_VOLCANIC_CHAMBER:
+						// ignore vm
+						return false;
+					default:
+						return true;
+				}
+			case "Cut":
+				return ev.getMenuTarget().contains("Redwood");
+			case "Chop down":
+			case "Chip":
+				return true;
+			default:
+				return false;
+		}
+	}
+
 	@Subscribe
 	private void onMenuOptionClicked(MenuOptionClicked ev)
 	{
@@ -56,15 +79,8 @@ public class AbexsIdleNotifierPlugin extends Plugin
 			case GAME_OBJECT_THIRD_OPTION:
 			case GAME_OBJECT_FOURTH_OPTION:
 			case GAME_OBJECT_FIFTH_OPTION:
-				if ("Mine".equals(ev.getMenuOption()) || "Chip".equals(ev.getMenuOption()))
+				if (shouldNotify(ev))
 				{
-					switch (ev.getId())
-					{
-						case ObjectID.BLOCKED_VOLCANIC_CHAMBER:
-							// ignore vm
-							return;
-					}
-
 					ObjectComposition lc = client.getObjectDefinition(ev.getId());
 					if (lc.getImpostorIds() != null)
 					{
