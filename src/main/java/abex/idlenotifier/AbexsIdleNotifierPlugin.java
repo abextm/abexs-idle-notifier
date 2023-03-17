@@ -7,6 +7,7 @@ import net.runelite.api.Client;
 import net.runelite.api.InventoryID;
 import net.runelite.api.ItemContainer;
 import net.runelite.api.ObjectComposition;
+import net.runelite.api.ObjectID;
 import net.runelite.api.Tile;
 import net.runelite.api.TileObject;
 import net.runelite.api.coords.LocalPoint;
@@ -57,6 +58,13 @@ public class AbexsIdleNotifierPlugin extends Plugin
 			case GAME_OBJECT_FIFTH_OPTION:
 				if ("Mine".equals(ev.getMenuOption()))
 				{
+					switch (ev.getId())
+					{
+						case ObjectID.BLOCKED_VOLCANIC_CHAMBER:
+							// ignore vm
+							return;
+					}
+
 					ObjectComposition lc = client.getObjectDefinition(ev.getId());
 					if (lc.getImpostorIds() != null)
 					{
