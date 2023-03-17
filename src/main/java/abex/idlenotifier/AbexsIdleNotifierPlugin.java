@@ -56,7 +56,7 @@ public class AbexsIdleNotifierPlugin extends Plugin
 			case GAME_OBJECT_THIRD_OPTION:
 			case GAME_OBJECT_FOURTH_OPTION:
 			case GAME_OBJECT_FIFTH_OPTION:
-				if ("Mine".equals(ev.getMenuOption()))
+				if ("Mine".equals(ev.getMenuOption()) || "Chip".equals(ev.getMenuOption()))
 				{
 					switch (ev.getId())
 					{
@@ -88,7 +88,13 @@ public class AbexsIdleNotifierPlugin extends Plugin
 			return false;
 		}
 
-		return o.getId() == id;
+		ObjectComposition lc = client.getObjectDefinition(o.getId());
+		if (lc.getImpostorIds() != null)
+		{
+			lc = lc.getImpostor();
+		}
+
+		return lc.getId() == id;
 	}
 
 	@Subscribe
