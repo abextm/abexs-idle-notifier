@@ -60,7 +60,8 @@ public class AbexsIdleNotifierPlugin extends Plugin
 						return true;
 				}
 			case "Cut":
-				return ev.getMenuTarget().contains("Redwood");
+				return ev.getMenuTarget().contains("Redwood") || ev.getMenuTarget().contains("Sulliuscep");
+			case "Cut down":
 			case "Chop down":
 			case "Chip":
 				return true;
