@@ -75,6 +75,15 @@ public class AbexsIdleNotifierPlugin extends Plugin
 	{
 		switch (ev.getMenuAction())
 		{
+			case RUNELITE_WIDGET:
+			case RUNELITE_HIGH_PRIORITY:
+			case RUNELITE:
+			case RUNELITE_OVERLAY:
+			case RUNELITE_OVERLAY_CONFIG:
+			case RUNELITE_PLAYER:
+			case RUNELITE_INFOBOX:
+			case RUNELITE_LOW_PRIORITY:
+				break;
 			case GAME_OBJECT_FIRST_OPTION:
 			case GAME_OBJECT_SECOND_OPTION:
 			case GAME_OBJECT_THIRD_OPTION:
