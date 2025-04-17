@@ -151,7 +151,7 @@ public class AbexsIdleNotifierPlugin extends Plugin
 			}
 			id = -1;
 			loc = null;
-			notifier.notify("you not busy smorc");
+			notifier.notify(config.notification(), "you not busy smorc");
 		}
 	}
 
