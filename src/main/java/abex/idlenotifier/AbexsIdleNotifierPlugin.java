@@ -4,16 +4,16 @@ import com.google.inject.Provides;
 import java.util.stream.Stream;
 import javax.inject.Inject;
 import net.runelite.api.Client;
-import net.runelite.api.InventoryID;
 import net.runelite.api.ItemContainer;
 import net.runelite.api.ObjectComposition;
-import net.runelite.api.ObjectID;
 import net.runelite.api.Tile;
 import net.runelite.api.TileObject;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.events.GameTick;
 import net.runelite.api.events.MenuOptionClicked;
+import net.runelite.api.gameval.InventoryID;
+import net.runelite.api.gameval.ObjectID;
 import net.runelite.client.Notifier;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
@@ -53,7 +53,7 @@ public class AbexsIdleNotifierPlugin extends Plugin
 			case "Mine":
 				switch (ev.getId())
 				{
-					case ObjectID.BLOCKED_VOLCANIC_CHAMBER:
+					case ObjectID.FOSSIL_VOLCANO_CHAMBER_BLOCKED:
 						// ignore vm
 						return false;
 					default:
@@ -138,7 +138,7 @@ public class AbexsIdleNotifierPlugin extends Plugin
 					for (TileObject o : t.getGameObjects()) found |= check(o);
 					if (found)
 					{
-						ItemContainer ic = client.getItemContainer(InventoryID.INVENTORY);
+						ItemContainer ic = client.getItemContainer(InventoryID.INV);
 						if (ic == null || ic.getItems().length < 28 || Stream.of(ic.getItems()).anyMatch(i -> i.getQuantity() == 0))
 						{
 							return;
